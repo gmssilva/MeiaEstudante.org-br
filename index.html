@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MeiaEstudante.org.br</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#f4f6f9] text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Topbar -->
+  <header class="w-full bg-[#1e40af] text-white shadow-sm border-t-4 border-[#22c55e]">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      
+      <!-- LOGO COMO IMAGEM DIRETA -->
+      <a href="#" class="flex items-center">
+        <img 
+          src="IMG/logo.png" 
+          alt="Meia Estudante ORG.BR" 
+          class="h-10 w-auto object-contain"
+        />
+      </a>
+
+      <!-- Botão Menu Hambúrguer -->
+      <button class="p-1 focus:outline-none" aria-label="Abrir menu" id="menuBtn">
+        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow">
+    
+    <!-- Título Principal -->
+    <h1 class="text-2xl lg:text-3xl font-bold text-[#1e1b4b] mb-6 tracking-tight">
+      Validação de CIE (Carteira de Identificação Estudantil)
+    </h1>
+
+    <!-- Box Status de Validação -->
+    <div id="statusBox" class="w-full bg-[#e8f5e9] border border-[#a5d6a7] rounded-lg py-3.5 px-4 text-center mb-6 flex items-center justify-center gap-2.5">
+      <span class="w-2.5 h-2.5 bg-[#2e7d32] rounded-full inline-block"></span>
+      <span id="statusLabel" class="text-[#2e7d32] font-bold text-sm md:text-base tracking-wider uppercase">
+        DOCUMENTO VÁLIDO
+      </span>
+    </div>
+
+    <!-- Texto de Confirmação / Disclaimer -->
+    <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-6">
+      <strong class="font-bold text-slate-900">UDBRA</strong> atesta que 
+      <span id="nomeInline" class="font-normal">Elis Vasconcelos Rodrigues</span> é pessoa estudante e está regularmente matriculada em 
+      <span id="cursoInline" class="font-normal">Medicina</span> na instituição 
+      <span id="instInline" class="font-normal">UNIRG - UNIVERSIDADE DE GURUPI</span>. O MeiaEstudante.org.br não se responsabiliza por nenhum tipo de irregularidade na matrícula.
+    </p>
+
+    <hr class="border-t border-slate-200 my-6">
+
+    <!-- Grid Layout: 2 Colunas no Desktop / 1 Coluna no Mobile -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Coluna da Esquerda: Foto e Dados do Estudante -->
+      <section class="lg:col-span-6 flex gap-4 items-start">
+        <div class="w-28 md:w-32 shrink-0">
+          <img 
+            src="IMG/1000385480_9525030c31f6077b188fe003d7b54b07-24_07_2026, 19_05_51.jpg" 
+            alt="Foto do estudante" 
+            id="studentPhoto"
+            class="w-full h-auto rounded-lg object-cover shadow-sm"
+          />
+        </div>
+
+        <div class="flex-grow text-sm md:text-base text-slate-700 space-y-1.5">
+          <h2 class="text-lg font-bold text-[#1e1b4b] mb-2">Dados do estudante:</h2>
+          <p><strong class="font-bold text-slate-900">Nome:</strong> <span id="fNome">Elis Vasconcelos Rodrigues</span></p>
+          <p><strong class="font-bold text-slate-900">CPF/CIN:</strong> <span id="fCpf">081.399.711-97</span></p>
+          <p><strong class="font-bold text-slate-900">Data de Nascimento:</strong> <span id="fNasc">24/06/2005</span></p>
+          <p><strong class="font-bold text-slate-900">Curso:</strong> <span id="fCurso">Medicina</span></p>
+          <p><strong class="font-bold text-slate-900">Instituição:</strong> <span id="fInst">UNIRG - UNIVERSIDADE DE GURUPI</span></p>
+          <p><strong class="font-bold text-slate-900">Código de uso:</strong> <span id="fCodigo">JBE156A5</span></p>
+          <p><strong class="font-bold text-slate-900">Emissor:</strong> <span id="fEmissor">UDBRA</span></p>
+        </div>
+      </section>
+
+      <!-- Coluna da Direita: Certificado de Atributo -->
+      <section class="lg:col-span-6 flex flex-col">
+        <h2 class="text-lg font-bold text-[#1e1b4b] mb-2">Certificado de Atributo:</h2>
+        <div class="bg-[#f0f3f8] border border-slate-200 rounded-lg p-4 font-mono text-[11px] leading-relaxed text-slate-500 break-all shadow-inner">
+          <div class="text-center text-slate-400 mb-2">-----BEGIN ATTRIBUTE CERTIFICATE-----</div>
+          <div id="certBlock">
+            MIIEDTCCAvUCAQEwXKBaMFWkUzELMAkGA1UEBhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxDjAMBgNVBAsTBVVEQlJBMR8wHQYDVQQDDBZHQUJSSUVMIE1FU1FVSVRBIFNJTFZBAgEBoIHKMIHHMIHEpIHBMQswCQYDVQQGEwJCUjETMBEGA1UECgwKSUNQLUJyYXNpbDEeMBwGA1UECwwVQUMgQ2VydGlzaWduIE11bHRpcGxhMRcwFQYDVQQLDA4xNzMzNDExNTAwMDExNTEZMBcGA1UECwwQVmlkZW9Db25mZXJlbmNpYTEbMBkGA1UECwwSQXNzaW5hdHVyYSBUaXBvIEEzMSwwKgYDVQQDDCNVREJSQSBVTklBTyBET1MgRElTQ0VOVEVTIERPIEJSQVNJTDANBgkqhkiG9w0BAQsFAAIQAZ+FiVY9wiyuPu+2JhmVATAiGA8yMDI2MDcyMTE2MzYzOFoYDzIwMjcwMzMxMjM1OTU5WjCBzTBGBgVgTAEKATE9EzsxM1E2NDExMDAwMDAwMDAwMDAwMDAwME5BMDAwMDAwMDAwMDAwMDAwICAgICAgICAgIDB2BgVgTAEKAjFtE2tVTEJSQSAtIFVOSVZFUlNJREFERSBMVVRFUkFOQSBETyBCUkFTSUwgQkFDSEFSRUxBRE8gICAgRU5HRU5IQVJJQSBERSBTT0ZUV0FSRSAgICAgICAgQlJBU0lMSUEgICAgICAgICAgICBERjALBgVgTAEEAzECEwAwga8wHwYDVR0jBBgwFoAUYt/30wIdIczwEgAxegAB3fa9NFIwWQYIKwYBBQUHAQEETTBLMEkGCCsGAQUFBzAChj1odHRwOi8vcmVwb3NpdG9yaW8uaWNwYnJhc2lsLmdvdi5ici9sY3IvQUNKVVMvY2FkZWlhY2VydHMucDdiMDEGA1UdHwQqMCgwJqAkoCKGIGh0dHBzOi8vbGNhci5jaWVzdHVkYW50ZS5ubC9sY3I80GCSqGSIb3DQEBCwUAA4IBAQAWxfm7u9d/XY5a7KrBRcUH5OHk2pzR6d5K3CLan8jasTFqSHYv7MAz9M768OttV/HnrbkWHt4F1OfrH5rFiU+PJ0ErBlD68dL0bb4LeTErLCblE0fKWet5V4qcsyzpM6i6e7WunGQyNLo5pYNqEVtSq9qFPORwxWbHmPXTky65A702NTBSLBbvp5gKkEcvsVHGmMHtHHZnrvpUUQ9mXrswSc9QmrTwO4w+yeaUqSjd+JqsToSBrJF8XNBu43wpamrmseJV0ND0rZnTnJ7gkl743xdY471Q5bnguZt1KiPqCY6Ac81PuzxLz+IVuZ0g9aCt24AnR9xh8A8+R6m4A3kW
+          </div>
+          <div class="text-center text-slate-400 mt-2">-----END ATTRIBUTE CERTIFICATE-----</div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="w-full bg-[#0a1128] text-white border-t-4 border-[#22c55e] py-8 px-4 mt-12">
+    <div class="max-w-6xl mx-auto flex flex-col items-center gap-4">
+      <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-300">
+        <a href="#" class="hover:text-white transition-colors">Início/Validar</a>
+        <a href="#" class="hover:text-white transition-colors">Lei da Meia-Entrada</a>
+        <a href="#" class="hover:text-white transition-colors">Dúvidas Frequentes</a>
+        <a href="#" class="hover:text-white transition-colors">Termos e Política de Privacidade</a>
+      </nav>
+      <p class="text-xs text-blue-200/70 mt-2">
+        MeiaEstudante.org.br 2026 © Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
